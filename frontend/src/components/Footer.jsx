@@ -61,7 +61,7 @@ function Footer() {
                 <div className="footer-line"></div>
                 <div className="copyright">
                     <FaRegCopyright className='copy-icon' />
-                    South Indian 2024. All Rights Reserved.
+                    South Indian 2025. All Rights Reserved.
                 </div>
             </div>
         </>
