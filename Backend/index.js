@@ -11,10 +11,14 @@ const url = process.env.DATABASE_URL;
 // Middleware
 app.use(
   cors({
-    origin: "https://nexus-project-2-restaurant-website.vercel.app",
+    origin: [
+      "http://localhost:3000",
+      "https://restaurant-agkl.vercel.app"
+    ],
     credentials: true,
   })
 );
+
 app.use(express.json());
 
 // MongoDB Connection (simplified for modern Mongoose)

@@ -145,10 +145,10 @@ function Signup() {
                 <div className="signup-layout">
 
                     <form className={`signup-form ${show ? "signup-hide" : "signup-show"}`} onSubmit={submitSignup} noValidate>
-                        <p className="signup-head">
+                        <div className="signup-head">
                             <h2 className="company-name1 signup-head1">South Indian</h2>
                             <h3 className="company-name2 signup-head1" >Restaurant</h3>
-                        </p>
+                        </div>
                         <div className="signup-title">
                             Signup
                         </div>
