@@ -10,7 +10,7 @@ const Basket = () => {
   const navigate = useNavigate();
 
   const totalPrice = cartItems.reduce((sum, item) => {
-    const price = parseFloat(item.Rate.replace(/[^\d.]/g, '')) || 0;
+    const price = parseFloat((item?.Rate || '').replace(/[^\d.]/g, '')) || 0;
     return sum + price * item.quantity;
   }, 0);
 
@@ -54,16 +54,24 @@ const Basket = () => {
                   <p className="card-rate">{item.Rate}</p>
 
                   <div className="quantity-controls">
-                    <button onClick={() => handleQuantityUpdate(index, item.quantity - 1, item)} disabled={item.quantity <= 1}>
+                    <button
+                      onClick={() => handleQuantityUpdate(index, item.quantity - 1, item)}
+                      disabled={item.quantity <= 1}
+                    >
                       ➖
                     </button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => handleQuantityUpdate(index, item.quantity + 1, item)}>
+                    <button
+                      onClick={() => handleQuantityUpdate(index, item.quantity + 1, item)}
+                    >
                       ➕
                     </button>
                   </div>
 
-                  <button className="remove-btn" onClick={() => handleRemove(index, item)}>
+                  <button
+                    className="remove-btn"
+                    onClick={() => handleRemove(index, item)}
+                  >
                     ❌ Remove
                   </button>
                 </div>

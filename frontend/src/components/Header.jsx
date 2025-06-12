@@ -6,12 +6,12 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
 import { FiShoppingCart } from "react-icons/fi";
 import { BooleanFlag } from '../App';
-import { useCart } from './CartContext';  // ✅ correct import
+import { useCart } from './CartContext';
 
 function Header({ children }) {
   const [Navbar, setNavbar] = useState(false);
   const { setPage } = useContext(BooleanFlag);
-  const { cartItems } = useCart();  // ✅ use hook
+  const { cartItems } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -47,6 +47,8 @@ function Header({ children }) {
                 <Link className="menu-item" onClick={closeNavbar} to='menu' spy={true} smooth={true} offset={-65} duration={500}>Menu</Link>
                 <Link className="menu-item" onClick={closeNavbar} to='reservation' spy={true} smooth={true} offset={-90}>Reservation</Link>
                 <Link className="menu-item" onClick={closeNavbar} to='about' spy={true} smooth={true} offset={-100}>About Us</Link>
+                <Link className="menu-item" onClick={closeNavbar} to='contact' spy={true} smooth={true} offset={-90}>Contact</Link>
+
               </>
             ) : (
               <>
@@ -55,6 +57,8 @@ function Header({ children }) {
                 <div className="menu-item" onClick={() => handleNavigateAndScroll("menu")}>Menu</div>
                 <div className="menu-item" onClick={() => handleNavigateAndScroll("reservation")}>Reservation</div>
                 <div className="menu-item" onClick={() => handleNavigateAndScroll("about")}>About Us</div>
+                <div className="menu-item" onClick={() => handleNavigateAndScroll("contact")}>Contact</div>
+
               </>
             )}
           </div>

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
+import Contact from "./components/Contact"; 
 import Service from "./components/Service";
 import Menu from "./components/Menu";
 import Reservation from "./components/Reservation";
@@ -50,7 +51,7 @@ function App() {
           >
             <ToastContainer position="top-center" autoClose={2000} />
             <Routes>
-              {/* Home Page - all sections */}
+
               <Route
                 path="/"
                 element={
@@ -61,6 +62,7 @@ function App() {
                     <Menu />
                     <Reservation />
                     <AboutUs />
+                    <Contact /> 
                     <Footer />
                   </>
                 }
@@ -117,6 +119,18 @@ function App() {
                   </>
                 }
               />
+              <Route
+                path="/contact"
+                element={
+                  <>
+                    <Header />
+                    <Contact />
+                    <Footer />
+                  </>
+                }
+              />
+
+              {/* Signup route */}
               <Route path="/signup" element={<Signup />} />
             </Routes>
           </Router>

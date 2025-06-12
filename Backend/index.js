@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const useRoute = require("./Router/router");
+const useRoute = require('./api/router');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,30 +12,34 @@ const url = process.env.DATABASE_URL;
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
-      "https://restaurant-agkl.vercel.app"
-    ],
+  "http://localhost:5173", // ✅ Correct local frontend port (Vite default)
+  "https://restaurant-agkl.vercel.app"
+],
+
     credentials: true,
   })
 );
 
 app.use(express.json());
 
-// MongoDB Connection (simplified for modern Mongoose)
+// ✅ Use the correct variable name
+// Removed: app.use("/router", router);
+// If you want to keep it: app.use("/router", useRoute);
+
+app.use("/api", useRoute); // Mount API routes under '/api'
+
+// MongoDB Connection
 mongoose.connect(url)
   .then(() => console.log("✅ Database connected"))
   .catch(err => console.error("❌ DB connection error:", err));
 
-// Routes
-app.use("/api", useRoute); // Consider using '/api' prefix for API routes
-
-// Health check endpoint
+// Health check
 app.get("/", (req, res) => {
   res.status(200).json({ status: "Server is running" });
 });
 
-// Server start
+// Start server
 app.listen(port, () => {
   console.log(`🚀 Server successfully running on port: ${port}`);
-  console.log("📦 DATABASE_URL = ", url); // Moved inside listener for better logging
+  console.log("📦 DATABASE_URL = ", url);
 });
